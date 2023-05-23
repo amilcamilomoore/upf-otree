@@ -5,6 +5,7 @@
 from otree.api import *
 from time_elicitation_task.config import *
 import random
+import time
 
 
 author = 'Patrick Sewell & Amil Camilo (Adapted from Felix Holzmeister)'
@@ -13,6 +14,10 @@ doc = """
 Staircase time elicitation task as proposed by Falk et al. (2016), Working Paper.
 """
 
+# def record_time():
+#     import time
+#     curr_time = time()
+#     return curr_time
 
 # ******************************************************************************************************************** #
 # *** CLASS SUBSESSION
@@ -49,6 +54,13 @@ class Player(BasePlayer):
     choice = models.StringField()
     switching_row = models.IntegerField()
     last_number = models.IntegerField()
+    patience_result = models.IntegerField()
+    decision_time = models.IntegerField()
+
+
+    def record_decision_time(self):
+        self.decision_time = int(time.time()) - self.participant.vars['start_time'] # records DT
+        self.participant.vars['start_time'] = int(time.time()) # updates start time
 
     # set sure payoff for next choice for TIME ELICITATION
     # ----------------------------------------------------------------------------------------------------------------
@@ -79,6 +91,8 @@ class Player(BasePlayer):
             else:
                 pass
         self.time_payoff = self.last_number
+        # self.decision_time = int(time.time()) - self.participant.vars['start_time'] #records decision time
+        # self.participant.vars['start_time'] = int(time.time()) #updates the start_time
 
     # update implied switching row each round
     # ----------------------------------------------------------------------------------------------------------------
@@ -97,17 +111,19 @@ class Player(BasePlayer):
         current_round = self.subsession.round_number
         current_choice = self.in_round(current_round).choice
 
-    def patience_result(self):
+    def set_patience_result(self):
         if self.choice == 'A':
             self.participant.vars['patience_result'] = Constants.time_matrix[self.last_number][0]
+            self.patience_result = self.participant.vars['patience_result']
 
         elif self.choice == 'B':
             self.participant.vars['patience_result'] = Constants.time_matrix[self.last_number][1]
+            self.patience_result = self.participant.vars['patience_result']
 
         else:
             pass
 
-        # if give_a_fuck:
+        # if care about payoffs:
         # else:
 
         #

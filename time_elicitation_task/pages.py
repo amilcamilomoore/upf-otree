@@ -2,7 +2,7 @@ from otree.api import Currency as c, currency_range
 from . import models
 from ._builtin import Page, WaitPage
 from .models import Constants
-
+import time
 
 # variables for all templates
 # --------------------------------------------------------------------------------------------------------------------
@@ -39,6 +39,8 @@ class Instructions(Page):
             # 'lo':   c(Constants.lottery_lo),
             # 'n': Constants.num_choices
         }
+    def before_next_page(self):
+        self.player.participant.vars['start_time'] = int(time.time())
 
 # ******************************************************************************************************************** #
 # *** PAGE DECISION *** #
@@ -67,15 +69,6 @@ class Decision(Page):
         progress = page / total * 100
 
         return {
-            # 'p_hi': "{0:.1f}".format(Constants.probability) + "%",
-            # 'p_lo': "{0:.1f}".format(100 - Constants.probability) + "%",
-            # 'hi': c(Constants.lottery_hi),
-            # 'lo': c(Constants.lottery_lo),
-            # 'n': c(Constants.num_choices),
-            # 'page':        page,
-            # 'total':       total,
-            # 'progress':    progress,
-            # 'sure_payoff': self.participant.vars['icl_sure_payoffs'][page - 1]
             'n': c(Constants.num_choices),
             'page':        page,
             'total':       total,
@@ -90,7 +83,8 @@ class Decision(Page):
         self.player.set_sure_payoffs()
         self.player.update_switching_row()
         self.player.set_payoffs()
-        self.player.patience_result()
+        self.player.set_patience_result()
+        self.player.record_decision_time()
 
 
 # ******************************************************************************************************************** #

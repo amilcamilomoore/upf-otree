@@ -52,7 +52,7 @@
             </div>
             <table class="table">
                 <tr>
-                    <th>{% trans "Option A:" %}</th>
+                    <th>{% trans "Opción A:" %}</th>
                     <td>
                         {% blocktrans trimmed with fixed_payoff=fixed_payoff %}
                             {{ fixed_payoff }} hoy
@@ -61,7 +61,7 @@
                     <td>
                         {% if Constants.buttons == True %}
                             <button class="btn btn-primary choice" name="choice" value="A" required>
-                                {% trans "Option A" %}
+                                {% trans "Opción A" %}
                             </button>
                         {% else %}
                             <input type="radio" name="choice" value="A" required>
@@ -70,7 +70,7 @@
                 </tr>
                 <tr>
                     <th>
-                        {% trans "Option B:" %}
+                        {% trans "Opción B:" %}
                     </th>
                     <td>
                         {% with time_payoff=time_payoff %}
@@ -82,7 +82,7 @@
                     <td>
                         {% if Constants.buttons == True %}
                             <button class="btn btn-primary choice" name="choice" value="B" required>
-                                {% trans "Option B" %}
+                                {% trans "Opción B" %}
                             </button>
                         {% else %}
                             <input type="radio" name="choice" value="B" required>

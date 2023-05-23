@@ -106,7 +106,7 @@ class Constants(BaseConstants):
     # show instructions page
     # if <instructions = True>, a separate template "Instructions.html" is rendered prior to the task
     # if <instructions = False>, the task starts immediately (e.g. in case of printed instructions)
-    instructions = False
+    instructions = True
 
     # show results page summarizing the task's outcome including payoff information
     # if <results = True>, a separate page containing all relevant information is displayed after finishing the task
