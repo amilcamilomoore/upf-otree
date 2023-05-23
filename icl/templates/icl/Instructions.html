@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Instructions" %}
+    {% trans "Instrucciones" %}
 {% endblock %}
 
 
@@ -27,21 +27,12 @@
     <div class="wrapper instructions">
         <p>
             {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-                In the following, you can choose between a sure payment and a lottery.
-                The lottery gives you a {{ p_hi }} chance of receiving {{ hi }}
-                and a {{ p_lo }} chance of receiving {{ lo }}.
-            {% endblocktrans %}
-            {% blocktrans trimmed with n=Constants.num_choices %}
-                We will present to you {{ n }} different choices.
-                While the lottery is the same in all choices,
-                the sure payment will differ in every choice.
+                Por favor, imagina la siguiente situación: Puedes elegir entre un pago seguro de una cantidad concreta de dinero o un sorteo, donde tendrías la misma posibilidad de conseguir {{ hi }} o de no conseguir nada.
             {% endblocktrans %}
         </p>
         <p>
             {% blocktrans trimmed with n=Constants.num_choices %}
-                After completing all {{ n }} choices, one of the choices will be randomly picked to determine your
-                payoff. If you chose the lottery, a random draw will determine whether the high or low outcome will
-                constitute your payoff; otherwise, the sure payment will constitute your payoff.
+Te presentaremos {{ n }} situaciones diferentes.
             {% endblocktrans %}
         </p>
     </div>

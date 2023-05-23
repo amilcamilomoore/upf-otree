@@ -15,7 +15,7 @@
 {# *** TITLE *** #}
 {# ****************************************************************************************************************** #}
 {% block title %}
-    {% trans "Your Decision" %}
+    {% trans "Tu decisión" %}
 {% endblock %}
 
 
@@ -32,7 +32,7 @@
         {% if Constants.progress_bar == True %}
             <label>
                 {% blocktrans trimmed with page=page total=total %}
-                    Page {{ page }} of {{ total }}
+                    Página {{ page }} de {{ total }}
                 {% endblocktrans %}
             </label>
             <div class="progress">
@@ -48,21 +48,21 @@
         <!-- ------------------------------------------------------------------------------------------------------- -->
         <div class="card">
             <div class="card-header">
-                {% trans "What do you prefer?" %}
+                {% trans "¿Qué preferirías?" %}
             </div>
             <table class="table">
                 <tr>
-                    <th>{% trans "Option A:" %}</th>
+                    <th>{% trans "Opción A:" %}</th>
                     <td>
                         {% blocktrans trimmed with p_hi=p_hi hi=hi p_lo=p_lo lo=lo %}
-                            {{ p_hi }} chance of winning {{ hi }} and <br/>
-                            {{ p_lo }} chance of winning {{ lo }}
+                            {{ p_hi }} de posibilidad de ganar {{ hi }} y <br/>
+                            {{ p_lo }} de posibilidad de ganar {{ lo }}
                         {% endblocktrans %}
                     </td>
                     <td>
                         {% if Constants.buttons == True %}
                             <button class="btn btn-primary choice" name="choice" value="A" required>
-                                {% trans "Option A" %}
+                                {% trans "Opción A" %}
                             </button>
                         {% else %}
                             <input type="radio" name="choice" value="A" required>
@@ -71,20 +71,19 @@
                 </tr>
                 <tr>
                     <th>
-                        {% trans "Option B:" %}
+                        {% trans "Opción B:" %}
                     </th>
                     <td>
                         {% with sure_payoff=sure_payoff %}
                             {% blocktrans trimmed %}
-                                an amount of {{ sure_payoff }}
-                                as a sure payment
+                                Un pago seguro de {{ sure_payoff }}
                             {% endblocktrans %}
                         {% endwith %}
                     </td>
                     <td>
                         {% if Constants.buttons == True %}
                             <button class="btn btn-primary choice" name="choice" value="B" required>
-                                {% trans "Option B" %}
+                                {% trans "Opción B" %}
                             </button>
                         {% else %}
                             <input type="radio" name="choice" value="B" required>

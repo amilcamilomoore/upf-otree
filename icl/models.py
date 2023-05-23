@@ -26,10 +26,7 @@ class Subsession(BaseSubsession):
             for p in self.get_players():
                 p.participant.vars['icl_sure_payoffs'] = [c(Constants.sure_payoff)]
                 p.participant.vars['icl_switching_row'] = 2 ** Constants.num_choices
-        # if self.round_number == 1:
-        #     for p in self.get_players():
-        #         p.participant.vars['time_payoffs'] = [c(Constants.first_number)]
-        #         p.participant.vars['time_switching_row'] = 2 ** Constants.num_choices_time
+
 
 # ******************************************************************************************************************** #
 # *** CLASS GROUP
@@ -50,15 +47,6 @@ class Player(BasePlayer):
     sure_payoff = models.FloatField()
     choice = models.StringField()
     switching_row = models.IntegerField()
-
-    # same variables for the TIME_ELICITATION
-    # random_draw2 = models.IntegerField()
-    # payoff_relevant2 = models.StringField()
-    # time_payoff = models.FloatField()
-    # choice2 = models.StringField()
-    # switching_row2 = models.IntegerField()
-    # last_number = models.IntegerField()
-
 
     # set sure payoff for next choice
     # ----------------------------------------------------------------------------------------------------------------
@@ -84,35 +72,6 @@ class Player(BasePlayer):
                 )
             else:
                 pass
-
-    # set sure payoff for next choice for TIME ELICITATION
-    # ----------------------------------------------------------------------------------------------------------------
-    # def set_sure_payoffs2(self):
-    #
-    #     # add current round's sure payoff to model field
-    #     # ------------------------------------------------------------------------------------------------------------
-    #     self.last_number = int(self.participant.vars['time_payoffs'][self.round_number - 1])
-    #
-    #     # determine sure payoff for next choice and append list of sure payoffs
-    #     # ------------------------------------------------------------------------------------------------------------
-    #     if not self.round_number == Constants.num_choices_time:
-    #
-    #         if self.choice == 'A':
-    #             self.last_number = Constants.time_matrix[self.last_number][0]
-    #             self.participant.vars['time_payoffs'].append(
-    #                 c(self.last_number))
-    #             #     c(self.participant.vars['time_sure_payoffs'][self.round_number - 1]
-    #             #     + Constants.delta / 2 ** (self.round_number - 1)) #this is changed
-    #             # )
-    #         elif self.choice == 'B':
-    #             self.last_number = Constants.time_sure_payoff[self.last_number][1]
-    #             self.participant.vars['time_payoffs'].append(
-    #                 c(self.last_number))
-    #             #     c(self.participant.vars['icl_sure_payoffs'][self.round_number - 1]
-    #             #     - Constants.delta / 2 ** (self.round_number - 1))
-    #             # )
-    #         else:
-    #             pass
 
     # update implied switching row each round
     # ----------------------------------------------------------------------------------------------------------------

@@ -39,17 +39,6 @@ class Constants(BaseConstants):
     # in choice 3, etc.
     delta = 80.00
 
-    ###### SAME FOR TIME DECISIONS ######
-    # num_choices_time = 5
-    # time_fixed = 100.00
-    # delta2 = 80.00 # I will need a matrix for this
-    # first_number = 154
-    # time_matrix = {
-    #     154: [185, 202],
-    #     185: [202, 169],
-    #     202: [201, 180]
-    # }
-
 
     # ---------------------------------------------------------------------------------------------------------------- #
     # --- Overall Settings and Appearance --- #
@@ -67,7 +56,7 @@ class Constants(BaseConstants):
     # if <buttons = True>, a button will be displayed for each choice ("A", "B", "Indifferent") instead of radio buttons
     # that is, subjects only click a single button than rather choosing a radio button and clicking on "Next"
     # <buttons = True> accelerates input of choices but implies that decisions can not be modified
-    buttons = True
+    buttons = False
 
     # show progress bar
     # if <progress_bar = True> and <one_choice_per_page = True>, a progress bar is rendered
@@ -84,7 +73,7 @@ class Constants(BaseConstants):
     # show results page summarizing the task's outcome including payoff information
     # if <results = True>, a separate page containing all relevant information is displayed after finishing the task
     # if <results = False>, the template "Decision.html" will not be rendered
-    results = True
+    results = False
 
     # ---------------------------------------------------------------------------------------------------------------- #
     # --- oTree Settings (Don't Modify) --- #

@@ -33,8 +33,8 @@ class Instructions(Page):
 
     def vars_for_template(self):
         return {
-            'p_hi': "{0:.1f}".format(Constants.probability) + "%",
-            'p_lo': "{0:.1f}".format(100 - Constants.probability) + "%",
+            'p_hi': "{0:.0f}".format(Constants.probability) + "%",
+            'p_lo': "{0:.0f}".format(100 - Constants.probability) + "%",
             'hi':   c(Constants.lottery_hi),
             'lo':   c(Constants.lottery_lo),
             'n': Constants.num_choices
@@ -73,14 +73,9 @@ class Decision(Page):
         page = self.subsession.round_number
         progress = page / total * 100
 
-        # # specify info for progress bar TIME SURVEY
-        # total2 = Constants.num_choices_time
-        # page2 = self.subsession.round_number
-        # progress2 = page2 / total * 100
-
         return {
-            'p_hi': "{0:.1f}".format(Constants.probability) + "%",
-            'p_lo': "{0:.1f}".format(100 - Constants.probability) + "%",
+            'p_hi': "{0:.0f}".format(Constants.probability) + "%",
+            'p_lo': "{0:.0f}".format(100 - Constants.probability) + "%",
             'hi': c(Constants.lottery_hi),
             'lo': c(Constants.lottery_lo),
             'n': c(Constants.num_choices),
@@ -88,11 +83,6 @@ class Decision(Page):
             'total':       total,
             'progress':    progress,
             'sure_payoff': self.participant.vars['icl_sure_payoffs'][page - 1],
-            # 'page2':        page2,
-            # 'total2':       total2,
-            # 'progress2':    progress2,
-            # 'time_payoff': self.participant.vars['time_payoffs'][page2 - 1],
-            # 'fixed_payoff': c(Constants.time_fixed)
         }
 
     # set sure payoffs for next choice, payoffs, and switching row
@@ -101,8 +91,6 @@ class Decision(Page):
         self.player.set_sure_payoffs()
         self.player.update_switching_row()
         self.player.set_payoffs()
-
-        # self.player.set_sure_payoffs2()
 
 
 # ******************************************************************************************************************** #
@@ -126,8 +114,8 @@ class Results(Page):
         sure_payoff = self.player.participant.vars['icl_sure_payoffs'][choice_to_pay - 1]
 
         return {
-            'p_hi': "{0:.1f}".format(Constants.probability) + "%",
-            'p_lo': "{0:.1f}".format(100 - Constants.probability) + "%",
+            'p_hi': "{0:.0f}".format(Constants.probability) + "%",
+            'p_lo': "{0:.0f}".format(100 - Constants.probability) + "%",
             'hi': c(Constants.lottery_hi),
             'lo': c(Constants.lottery_lo),
             'n': c(Constants.num_choices),
